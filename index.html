@@ -1,27 +1,65 @@
----
-layout: default
----
-
-<h2>最新文章</h2>
-
-{% for post in site.posts %}
-<div class="post">
-  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-  <div class="post-meta">
-    {{ post.date | date: "%Y年%m月%d日" }}
-    {% if post.categories %}
-      | 分类: {{ post.categories | join: ", " }}
-    {% endif %}
-  </div>
-  <div class="post-content">
-    {{ post.excerpt }}
-    <p><a href="{{ post.url }}">阅读全文 &rarr;</a></p>
-  </div>
-</div>
-{% endfor %}
-
-{% if site.posts.size == 0 %}
-<div class="post">
-  <p>还没有发布任何文章。</p>
-</div>
-{% endif %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsxyhelu 的个人博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .post {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post h2 {
+            color: #555;
+        }
+        .post-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>jsxyhelu 的个人博客</h1>
+        <p>记录技术学习与生活感悟</p>
+    </header>
+    <div class="container">
+        <div class="post">
+            <h2>欢迎来到我的博客</h2>
+            <p class="post-date">2026年2月19日</p>
+            <p>这是我的 GitHub Pages 博客的第一篇文章。在这里，我将分享技术学习心得、项目经验和生活感悟。</p>
+            <p>博客基于 GitHub Pages 构建，使用静态网站技术，简单高效。</p>
+        </div>
+        <div class="post">
+            <h2>关于我</h2>
+            <p class="post-date">2026年2月19日</p>
+            <p>我是 jsxyhelu，一名热爱技术的开发者。专注于前端开发、后端技术和开源项目。</p>
+            <p>希望通过这个博客，与更多志同道合的朋友交流学习。</p>
+        </div>
+    </div>
+</body>
+</html>
