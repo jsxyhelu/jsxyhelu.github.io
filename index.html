@@ -3,75 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌳 jsxyhelu 的绿色博客</title>
+    <title>🌳 jsxyhelu 的绿色博客 - GREENOPEN</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            background: #e0e9c8;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40vh;
+            background: 
+                linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #43a047 100%);
+            clip-path: polygon(0 60%, 25% 30%, 50% 50%, 75% 25%, 100% 45%, 100% 100%, 0 100%);
+            z-index: 0;
+            opacity: 0.6;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30vh;
+            background: 
+                linear-gradient(135deg, #388e3c 0%, #4caf50 50%, #66bb6a 100%);
+            clip-path: polygon(0 70%, 20% 40%, 45% 55%, 70% 35%, 100% 50%, 100% 100%, 0 100%);
+            z-index: 1;
+            opacity: 0.7;
         }
         header {
-            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            background: linear-gradient(180deg, #2e7d32 0%, #1b5e20 100%);
             color: white;
             padding: 2rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             position: relative;
+            z-index: 10;
             overflow: hidden;
         }
-        header::before {
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        .green-button {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 50%, #1b5e20 100%);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.3),
+                inset 0 2px 4px rgba(255,255,255,0.3),
+                inset 0 -2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .green-button::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="50">🌲</text></svg>');
-            background-size: 60px;
-            opacity: 0.1;
-            animation: float 20s infinite linear;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 2px 4px rgba(0,0,0,0.3);
         }
-        @keyframes float {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-60px); }
+        .green-button::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .logo-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1b5e20;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+        }
+        .logo-text .green {
+            color: #4caf50;
+        }
+        .logo-text .open {
+            color: #81c784;
+        }
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: white;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-top: 0.5rem;
         }
         .container {
             max-width: 900px;
             margin: 2rem auto;
             padding: 2rem;
             background-color: rgba(255,255,255,0.95);
-            box-shadow: 0 8px 32px rgba(46,125,50,0.15);
-            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(27,94,32,0.2);
+            border-radius: 16px;
             backdrop-filter: blur(10px);
-        }
-        h1 {
-            color: #1b5e20;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
+            position: relative;
+            z-index: 5;
         }
         .post {
             margin-bottom: 2.5rem;
             padding: 1.5rem;
-            border-left: 4px solid #2e7d32;
-            background: linear-gradient(to right, rgba(46,125,50,0.05), transparent);
+            border-left: 4px solid #4caf50;
+            background: linear-gradient(to right, rgba(76,175,80,0.08), transparent);
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .post:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(46,125,50,0.2);
+            box-shadow: 0 4px 16px rgba(76,175,80,0.25);
         }
         .post h2 {
-            color: #2e7d32;
+            color: #1b5e20;
             font-size: 1.8rem;
             margin-top: 0;
         }
@@ -98,31 +174,61 @@
         .footer {
             text-align: center;
             padding: 2rem;
-            color: #2e7d32;
+            color: #1b5e20;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 10;
         }
         .footer a {
-            color: #2e7d32;
+            color: #1b5e20;
             text-decoration: none;
-            border-bottom: 1px dashed #2e7d32;
+            border-bottom: 1px dashed #1b5e20;
         }
         .footer a:hover {
             border-bottom-style: solid;
         }
         .leaf-pattern {
             position: fixed;
-            bottom: 20px;
+            bottom: 35vh;
             right: 20px;
             font-size: 3rem;
-            opacity: 0.3;
+            opacity: 0.4;
             animation: float 15s infinite linear;
+            z-index: 10;
+        }
+        @keyframes float {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-60px); }
+        }
+        h3 {
+            color: #2e7d32;
+            border-bottom: 2px solid #81c784;
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem 0;
+        }
+        h4 {
+            color: #388e3c;
+        }
+        ul, ol {
+            margin-left: 1.5rem;
+        }
+        li {
+            margin: 0.5rem 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🌳 jsxyhelu 的绿色博客</h1>
-        <p>🌿 在技术的森林中成长，分享绿色生活与编程智慧</p>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="green-button"></div>
+                <div class="logo-text">
+                    <span class="green">GREEN</span><span class="open">OPEN</span>
+                </div>
+            </div>
+            <h1>🌳 jsxyhelu 的绿色博客</h1>
+            <p>🌿 在技术的森林中成长，分享绿色生活与编程智慧</p>
+        </div>
     </header>
     <div class="container">
         <div class="post">
@@ -133,7 +239,7 @@
             <p>🌱 我相信技术与自然可以和谐共存，通过分享和交流，我们共同构建一个更加绿色的技术社区。</p>
         </div>
         <div class="post">
-            <h2><span class="tree-decoration">�</span>基于AI复刻春晚魔术计算器</h2>
+            <h2><span class="tree-decoration">🎭</span>基于AI复刻春晚魔术计算器</h2>
             <p class="post-date">📅 2026年2月19日</p>
             <p>今年春晚中出现了一个使用计算器的魔术，进一步研究发现相关原理还是比较简单的，所以想基于AI开展复刻。</p>
             
@@ -242,7 +348,7 @@
             <p>🌟 最终结果：成功复刻了春晚魔术计算器，实现了基于Web的计算器应用，可以在手机和电脑上访问使用。</p>
         </div>
         <div class="post">
-            <h2><span class="tree-decoration">�🌳</span>关于我</h2>
+            <h2><span class="tree-decoration">🌳</span>关于我</h2>
             <p class="post-date">📅 2026年2月19日</p>
             <p>我是 jsxyhelu，一名热爱技术的开发者。专注于前端开发、后端技术和开源项目。</p>
             <p>🌿 就像森林中的每一棵树都有其独特之处，我也在技术的道路上不断探索和成长。希望通过这个博客，与更多志同道合的朋友交流学习，共同进步。</p>
