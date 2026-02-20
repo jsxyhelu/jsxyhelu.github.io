@@ -91,7 +91,7 @@
             margin-top: 0.5rem;
         }
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
             background-color: rgba(255,255,255,0.95);
@@ -100,6 +100,58 @@
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 5;
+            display: flex;
+            gap: 2rem;
+        }
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        .sidebar h3 {
+            color: #1b5e20;
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #4caf50;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .post-list li {
+            margin-bottom: 0.5rem;
+        }
+        .post-list a {
+            display: block;
+            padding: 0.6rem 0.8rem;
+            color: #2e7d32;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .post-list a:hover {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            transform: translateX(4px);
+        }
+        .post-list .post-date {
+            font-size: 0.8rem;
+            color: #66bb6a;
+            margin-top: 0.2rem;
+            font-weight: normal;
+        }
+        .main-content {
+            flex: 1;
+            min-width: 0;
         }
         .post {
             margin-bottom: 2.5rem;
@@ -182,6 +234,29 @@
         li {
             margin: 0.5rem 0;
         }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+                overflow-y: visible;
+            }
+            .post-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 0.5rem;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .logo-image {
+                max-width: 240px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -195,14 +270,26 @@
         </div>
     </header>
     <div class="container">
-        <div class="post">
+        <aside class="sidebar">
+            <h3>📚 文章目录</h3>
+            <ul class="post-list">
+                <li><a href="#post-github-blog">创建基于GitHub的博客<span class="post-date">2026-02-20</span></a></li>
+                <li><a href="#post-about">关于我<span class="post-date">2026-02-20</span></a></li>
+                <li><a href="#post-welcome">欢迎来到我的绿色博客<span class="post-date">2026-02-19</span></a></li>
+                <li><a href="#post-magic-calculator">基于AI复刻春晚魔术计算器<span class="post-date">2026-02-19</span></a></li>
+                <li><a href="#post-ai-video">AI、短视频和原始人性<span class="post-date">2026-02-19</span></a></li>
+                <li><a href="#post-tech-philosophy">技术理念<span class="post-date">2026-02-19</span></a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="post" id="post-welcome">
             <h2><span class="tree-decoration">🌲</span>欢迎来到我的绿色博客</h2>
             <p class="post-date">📅 2026年2月19日</p>
             <p>这是我的 GitHub Pages 博客的第一篇文章。在这里，我将分享技术学习心得、项目经验和生活感悟。</p>
             <p>博客基于 GitHub Pages 构建，使用静态网站技术，简单高效。就像一棵小树苗，在代码的土壤中茁壮成长。</p>
             <p>🌱 我相信技术与自然可以和谐共存，通过分享和交流，我们共同构建一个更加绿色的技术社区。</p>
         </div>
-        <div class="post">
+        <div class="post" id="post-magic-calculator">
             <h2><span class="tree-decoration">🎭</span>基于AI复刻春晚魔术计算器</h2>
             <p class="post-date">📅 2026年2月19日</p>
             <p>今年春晚中出现了一个使用计算器的魔术，进一步研究发现相关原理还是比较简单的，所以想基于AI开展复刻。</p>
@@ -311,7 +398,7 @@
             
             <p>🌟 最终结果：成功复刻了春晚魔术计算器，实现了基于Web的计算器应用，可以在手机和电脑上访问使用。</p>
         </div>
-        <div class="post">
+        <div class="post" id="post-ai-video">
             <h2><span class="tree-decoration">🎬</span>AI、短视频和原始人性</h2>
             <p class="post-date">📅 2026年2月19日</p>
             <img src="images/fe0d4407-0f50-41b1-af6e-85f7d45b3936.jpg" alt="AI、短视频和原始人性" style="width: 100%; max-width: 600px; border-radius: 8px; margin: 1rem 0;">
@@ -548,7 +635,7 @@
             
             <p>📎 <strong>原文链接</strong>：<a href="https://www.modelscope.cn/learn/5636" target="_blank">https://www.modelscope.cn/learn/5636</a></p>
         </div>
-        <div class="post">
+        <div class="post" id="post-about">
             <h2><span class="tree-decoration">📝</span>创建基于GitHub的博客</h2>
             <p class="post-date">📅 2026年2月20日</p>
             <p>一直以来我都指导，基于github可以创建博客，但是一直没有实践成功。另一方面，目前我每天都基于AI编写一篇博客（目前主要发在魔搭上面），我希望能够同步、一键上传到Github.io上去做沉淀，这些都需要把Github博客这件事情搞清楚。</p>
@@ -563,7 +650,7 @@
             
             <p>📎 <strong>原文链接</strong>：<a href="https://uh9iow7vir.feishu.cn/wiki/GR4HwpDY6iA6aEkXwDzctBQQnId?from=from_copylink" target="_blank">https://uh9iow7vir.feishu.cn/wiki/GR4HwpDY6iA6aEkXwDzctBQQnId?from=from_copylink</a></p>
         </div>
-        <div class="post">
+        <div class="post" id="post-about">
             <h2><span class="tree-decoration">🌳</span>关于我</h2>
             <p class="post-date">📅 2026年2月20日</p>
             <p>我是 jsxyhelu，一名热爱技术的开发者，专注于 <strong>图像处理</strong>、<strong>大语言模型</strong> 和 <strong>开源项目</strong>。</p>
@@ -578,6 +665,7 @@
             <p>🌳 我追求代码的可维护性，就像树木需要良好的根基；注重性能优化，如同植物需要高效的光合作用；重视用户体验，恰似森林为生物提供舒适的栖息地。</p>
             <p>🌱 让我们一起在技术的森林中，种下创新的种子，收获成长的果实。</p>
         </div>
+        </main>
     </div>
     <div class="leaf-pattern">🍃</div>
     <div class="footer">
